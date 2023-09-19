@@ -1,7 +1,12 @@
 import { Button } from '@/components/ui/button';
+import { auth } from '@clerk/nextjs';
 import Link from 'next/link';
 
-export default function Home() {
+export default async function Home() {
+  const { userId } = await auth();
+  console.log(userId);
+  let href = userId ? '/journal' : '/new-user';
+
   return (
     <div className="min-h-screen w-screen bg-gradient-to-r from-purple-200 to-teal-200">
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -17,7 +22,7 @@ export default function Home() {
             All you have to do is be honest.
           </p>
           <div>
-            <Link href={''}>
+            <Link href={href}>
               <Button>Get started</Button>
             </Link>
           </div>
