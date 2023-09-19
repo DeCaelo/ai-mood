@@ -18,7 +18,9 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={inter.className}>{children}</body>
+        <body className="min-h-screen w-screen bg-gradient-to-r from-orange-600 to-teal-800">
+          {children}
+        </body>
       </html>
     </ClerkProvider>
   );
