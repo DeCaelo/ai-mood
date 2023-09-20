@@ -31,7 +31,7 @@ const JournalPage = async () => {
       <div className="my-8">
         <Question />
       </div>
-      <div className="grid grid-cols-3 gap-4">
+      <>
         <NewEntry />
         {entries.map((entry: any) => (
           <div key={entry.id}>
@@ -40,7 +40,7 @@ const JournalPage = async () => {
             </Link>
           </div>
         ))}
-      </div>
+      </>
     </div>
   );
 };

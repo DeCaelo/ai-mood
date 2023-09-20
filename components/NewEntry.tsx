@@ -1,10 +1,21 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+import { Button } from './ui/button';
+import { newEntry } from '@/utils/api';
+
 const NewEntry = () => {
+  const router = useRouter();
+
+  const handleOnClick = async () => {
+    const { data } = await newEntry();
+    router.push(`/journal/${data.id}`);
+  };
+
   return (
-    <div className="px-4 py-5 sm:p-6">
-      <span className="text-3xl">New Entry</span>
-    </div>
+    <Button onClick={handleOnClick} size={'xl'}>
+      Add New Entry
+    </Button>
   );
 };
 
