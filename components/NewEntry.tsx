@@ -6,6 +6,7 @@ import { newEntry } from '@/utils/api';
 
 const NewEntry = () => {
   const router = useRouter();
+  // TODO: loader sur bouton et disabled
 
   const handleOnClick = async () => {
     const { data } = await newEntry();

@@ -9,11 +9,13 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { AlertDialogwithChildren } from './AlertDialog';
+import { AlertDialogWithChildren } from './AlertDialog';
+import { Dispatch, SetStateAction } from 'react';
 
 type CardProps = React.ComponentProps<typeof Card>;
 
 type ExtendedCardProps = CardProps & {
+  setDeleteIsLoading: Dispatch<SetStateAction<boolean>>;
   entry: {
     id: number;
     content: string;
@@ -26,6 +28,7 @@ type ExtendedCardProps = CardProps & {
 };
 
 export function AnalysisCard({
+  setDeleteIsLoading,
   entry,
   className,
   ...props
@@ -70,11 +73,14 @@ export function AnalysisCard({
         </div>
       </CardContent>
       <CardFooter>
-        <AlertDialogwithChildren entry={entry}>
+        <AlertDialogWithChildren
+          entry={entry}
+          setDeleteIsLoading={setDeleteIsLoading}
+        >
           <Button className="w-full font-bold" variant={'destructive'}>
             <Check className="mr-2 h-4 w-4" /> Delete this mood
           </Button>
-        </AlertDialogwithChildren>
+        </AlertDialogWithChildren>
       </CardFooter>
     </Card>
   );

@@ -12,20 +12,23 @@ import {
 import { deleteEntry } from '@/utils/api';
 import { useRouter } from 'next/navigation';
 
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 
-export function AlertDialogwithChildren({
+export function AlertDialogWithChildren({
+  setDeleteIsLoading,
   entry,
   children,
 }: {
   entry: {
     id: number;
   };
+  setDeleteIsLoading: Dispatch<SetStateAction<boolean>>;
   children: React.ReactNode;
 }) {
   const router = useRouter();
 
   const handleDelete = async () => {
+    setDeleteIsLoading(true);
     await deleteEntry(entry.id);
     router.push('/journal');
   };
