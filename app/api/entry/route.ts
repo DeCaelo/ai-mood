@@ -1,4 +1,3 @@
-import { update } from '@/app/actions';
 import { getUserFromClerkID } from '@/utils/auth';
 import { prisma } from '@/utils/db';
 import { NextResponse } from 'next/server';
@@ -11,8 +10,6 @@ export const POST = async () => {
       content: 'Your mood today',
     },
   });
-
-  update(['/journal']);
 
   return NextResponse.json({ data: entry });
 };

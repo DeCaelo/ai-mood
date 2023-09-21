@@ -1,4 +1,3 @@
-import { update } from '@/app/actions';
 import { getUserFromClerkID } from '@/utils/auth';
 import { prisma } from '@/utils/db';
 import { NextResponse } from 'next/server';
@@ -20,8 +19,6 @@ export const PATCH = async (
     data: updates,
   });
 
-  update(['/journal']);
-
   return NextResponse.json({ data: { ...entry } });
 };
 
@@ -39,8 +36,6 @@ export const DELETE = async (
       },
     },
   });
-
-  update(['/journal']);
 
   return NextResponse.json({ data: { id: params.id } });
 };
