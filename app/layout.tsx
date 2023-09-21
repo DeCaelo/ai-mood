@@ -2,6 +2,7 @@ import { ClerkProvider } from '@clerk/nextjs';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import ReactQueryProvider from '@/components/providers/ReactQueryProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,7 +20,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className="min-h-screen w-screen bg-gradient-to-r from-orange-600 to-teal-800">
-          {children}
+          <ReactQueryProvider>{children}</ReactQueryProvider>
         </body>
       </html>
     </ClerkProvider>
