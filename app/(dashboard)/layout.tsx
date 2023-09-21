@@ -15,7 +15,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
 
   return (
-    <div className="bg-orange-50 min-h-screen w-screen">
+    <div className="min-h-screen w-screen">
       <aside className="absolute left-0 top-0 h-full w-[200px]">
         <div className="px-4 my-4">
           <span className="flex items-center">
