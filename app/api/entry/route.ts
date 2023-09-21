@@ -1,4 +1,4 @@
-import { update } from '@/utils/actions';
+import { update } from '@/app/actions';
 import { getUserFromClerkID } from '@/utils/auth';
 import { prisma } from '@/utils/db';
 import { NextResponse } from 'next/server';

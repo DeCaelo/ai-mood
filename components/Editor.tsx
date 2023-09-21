@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useAutosave } from 'react-autosave';
 import { Textarea } from './ui/textarea';
 import { AnalysisCard } from './AnalysisCard';
-import { ScreenLoader } from './Loader';
+import { TinyLoader } from './Loader';
 
 const Editor = ({ entry }: any) => {
   const [text, setText] = useState(entry.content);
@@ -28,12 +28,12 @@ const Editor = ({ entry }: any) => {
   return (
     <>
       {deleteIsLoading ? (
-        <ScreenLoader />
+        <TinyLoader />
       ) : (
         <div className="w-full h-full grid grid-cols-3 gap-0 relative">
           <div className="absolute left-0 top-0 p-2">
             {isSaving ? (
-              <ScreenLoader />
+              <TinyLoader />
             ) : (
               <div className="w-[16px] h-[16px] rounded-full bg-green-500"></div>
             )}
