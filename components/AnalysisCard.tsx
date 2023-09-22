@@ -11,6 +11,7 @@ import {
 } from '@/components/ui/card';
 import { AlertDialogWithChildren } from './AlertDialog';
 import { Dispatch, SetStateAction } from 'react';
+import getColorForSentiment from '@/utils/getColors';
 
 type CardProps = React.ComponentProps<typeof Card>;
 
@@ -27,6 +28,11 @@ type ExtendedCardProps = CardProps & {
   };
 };
 
+// TODO: à supprimer
+const sentimentScore: number = -10;
+const color: string = getColorForSentiment(sentimentScore);
+console.log('COLOR', color);
+
 export function AnalysisCard({
   setDeleteIsLoading,
   entry,
@@ -35,11 +41,16 @@ export function AnalysisCard({
 }: ExtendedCardProps) {
   return (
     <Card className={cn('w-[380px] h-[420px]', className)} {...props}>
-      <CardHeader>
+      <CardHeader
+        style={{ background: color || '#FFF' }}
+        className="rounded-lg border-2 border-slate-300 hover:border-indigo-300"
+      >
         <CardTitle>Analysis</CardTitle>
-        <CardDescription>Your mood this day.</CardDescription>
+        <CardDescription style={{ color: '#FFF' }}>
+          Your mood this day.
+        </CardDescription>
       </CardHeader>
-      <CardContent className="grid gap-4">
+      <CardContent className="grid gap- mt-5">
         <div className="mb-4 grid grid-cols-[25px_1fr] items-start pb-4 last:mb-0 last:pb-0">
           <span className="flex h-2 w-2 translate-y-1 rounded-full bg-sky-500" />
           <div className="space-y-1">

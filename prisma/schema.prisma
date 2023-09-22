@@ -51,8 +51,7 @@ model EntryAnalysis {
   subject        String  @db.Text
   negative       Boolean
   summary        String  @db.Text
-  color          String  @db.Text
-
+  
   @@unique([entryId])
   @@index([userId])
 }
