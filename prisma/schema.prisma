@@ -51,6 +51,7 @@ model EntryAnalysis {
   subject        String  @db.Text
   negative       Boolean
   summary        String  @db.Text
+  sentimentScore Float
   
   @@unique([entryId])
   @@index([userId])
