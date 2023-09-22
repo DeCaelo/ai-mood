@@ -1,6 +1,7 @@
 import EntryCard from '@/components/EntryCard';
 import NewEntry from '@/components/NewEntry';
 import Question from '@/components/Question';
+import { analyzeEntry } from '@/utils/ai';
 import { getUserFromClerkID } from '@/utils/auth';
 import { prisma } from '@/utils/db';
 import Link from 'next/link';
@@ -18,6 +19,10 @@ const getEntries = async () => {
       analysis: true,
     },
   });
+
+  await analyzeEntry(
+    'create me a react typescript component that renders a counting number'
+  );
 
   return data;
 };
