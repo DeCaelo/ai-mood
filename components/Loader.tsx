@@ -1,3 +1,5 @@
+'use client';
+
 import { Loader } from 'lucide-react';
 
 export const TinyLoader = () => {

@@ -1,10 +1,9 @@
-'use client';
 import { Button } from '@/components/ui/button';
 import { UserButton } from '@clerk/nextjs';
 import { Orbit } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
-import { usePathname } from 'next/navigation';
+//import { usePathname } from 'next/navigation';
 
 const links = [
   { name: 'Journal', href: '/journal' },
@@ -12,7 +11,7 @@ const links = [
 ];
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
-  const pathname = usePathname();
+  //const pathname = usePathname();
 
   return (
     <div className="min-h-screen w-screen">
@@ -31,7 +30,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
                   <Button
                     variant={'link'}
                     className="w-40"
-                    disabled={pathname === link.href}
+                    //disabled={pathname === link.href}
                   >
                     {link.name}
                   </Button>

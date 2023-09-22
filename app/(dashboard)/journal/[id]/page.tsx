@@ -1,3 +1,5 @@
+'use server';
+
 import Editor from '@/components/Editor';
 import { getUserFromClerkID } from '@/utils/auth';
 import { prisma } from '@/utils/db';

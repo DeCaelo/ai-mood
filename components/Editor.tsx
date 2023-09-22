@@ -1,4 +1,5 @@
 'use client';
+
 import { updateEntry } from '@/utils/api';
 import { useState } from 'react';
 import { useAutosave } from 'react-autosave';
