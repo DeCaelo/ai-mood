@@ -46,11 +46,9 @@ const getPrompt = async (content: string) => {
 };
 
 export const analyzeEntry = async (entry: any) => {
-  console.log('ENTRY', entry);
   const input = await getPrompt(entry.content);
   const model = new OpenAI({ temperature: 0, modelName: 'gpt-3.5-turbo' });
   const result = await model.call(input);
-  console.log('RESULT', result);
 
   try {
     return parser.parse(result);
