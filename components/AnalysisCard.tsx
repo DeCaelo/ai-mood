@@ -24,14 +24,10 @@ type ExtendedCardProps = CardProps & {
       subject: string;
       mood: string;
       negative: boolean;
+      sentimentScore: number;
     };
   };
 };
-
-// TODO: à supprimer
-const sentimentScore: number = -10;
-const color: string = getColorForSentiment(sentimentScore);
-console.log('COLOR', color);
 
 export function AnalysisCard({
   setDeleteIsLoading,
@@ -39,6 +35,8 @@ export function AnalysisCard({
   className,
   ...props
 }: ExtendedCardProps) {
+  const color: string = getColorForSentiment(entry?.analysis?.sentimentScore);
+
   return (
     <Card className={cn('w-[380px] h-[420px]', className)} {...props}>
       <CardHeader
@@ -56,7 +54,6 @@ export function AnalysisCard({
           <div className="space-y-1">
             <p className="text-xl font-medium leading-none">Subject</p>
             <p className="text-sm text-muted-foreground">
-              subject
               {entry?.analysis?.subject}
             </p>
           </div>
@@ -67,7 +64,6 @@ export function AnalysisCard({
           <div className="space-y-1">
             <p className="text-xl font-medium leading-none">Mood</p>
             <p className="text-sm text-muted-foreground">
-              mood
               {entry?.analysis?.mood}
             </p>
           </div>

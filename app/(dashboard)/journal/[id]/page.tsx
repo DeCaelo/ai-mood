@@ -11,6 +11,9 @@ const getEntry = async (id: string) => {
         id,
       },
     },
+    include: {
+      analysis: true,
+    },
   });
 
   return data;
@@ -18,6 +21,7 @@ const getEntry = async (id: string) => {
 
 const JournalEditorPage = async ({ params }: { params: { id: string } }) => {
   const entry = await getEntry(params.id);
+  //console.log(entry);
   return (
     <div className="w-full h-full">
       <Editor entry={entry} />
