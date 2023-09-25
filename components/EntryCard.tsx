@@ -10,14 +10,8 @@ const EntryCard = ({ entry }: EntryCardType) => {
   return (
     <div className="overflow-hidden rounded-lg bg-white shadow max-w-sm my-3">
       <div className="px-4 py-5">{date}</div>
-      <div className="px-4 py-5">
-        summary
-        {entry?.analysis?.summary}
-      </div>
-      <div className="px-4 py-4">
-        mood
-        {entry?.analysis?.mood}
-      </div>
+      <div className="px-4 py-5">{entry?.analysis?.summary}</div>
+      <div className="px-4 py-4">{entry?.analysis?.mood}</div>
     </div>
   );
 };

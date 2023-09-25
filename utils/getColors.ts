@@ -23,7 +23,7 @@ function getColorForSentiment(score: number): string {
     '10': '',
   };
 
-  return colorMap[score.toString()] || '#FFF';
+  return colorMap[score?.toString()] || '#FFF';
 }
 
 export default getColorForSentiment;

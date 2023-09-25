@@ -5,12 +5,23 @@ import { useAutosave } from 'react-autosave';
 import { Textarea } from './ui/textarea';
 import { AnalysisCard } from './AnalysisCard';
 import { TinyLoader } from './Loader';
+import getColorForSentiment from '@/utils/getColors';
 
 const Editor = ({ entry }: any) => {
   const [text, setText] = useState(entry.content);
-  const [currentEntry, setEntry] = useState(entry);
+  const [analysis, setAnalysis] = useState(entry.analysis);
   const [isSaving, setIsSaving] = useState(false);
   const [deleteIsLoading, setDeleteIsLoading] = useState(false);
+
+  const { mood, summary, subject, negative, sentimentScore } = analysis;
+  const color: string = getColorForSentiment(sentimentScore);
+
+  const analysisData = [
+    { id: 1, name: 'Summary', value: summary },
+    { id: 2, name: 'Subject', value: subject },
+    { id: 3, name: 'Mood', value: mood },
+    { id: 4, name: 'Negative', value: negative ? 'true' : 'false' },
+  ];
 
   useAutosave({
     data: text,
@@ -20,7 +31,7 @@ const Editor = ({ entry }: any) => {
 
       const { data } = await updateEntry(entry.id, { content: _text });
 
-      setEntry(data);
+      setAnalysis(data.analysis);
       setIsSaving(false);
     },
   });
@@ -50,8 +61,11 @@ const Editor = ({ entry }: any) => {
           </div>
           <AnalysisCard
             className="ml-3"
-            entry={currentEntry}
+            analysisData={analysisData}
             setDeleteIsLoading={setDeleteIsLoading}
+            isSaving={isSaving}
+            color={color}
+            entry={entry}
           />
         </div>
       )}
