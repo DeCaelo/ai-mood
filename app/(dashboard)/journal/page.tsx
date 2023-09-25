@@ -1,6 +1,7 @@
 import EntryCard from '@/components/EntryCard';
 import NewEntry from '@/components/NewEntry';
 import Question from '@/components/Question';
+import { Separator } from '@/components/ui/separator';
 import { getUserFromClerkID } from '@/utils/auth';
 import { prisma } from '@/utils/db';
 import Link from 'next/link';
@@ -32,6 +33,7 @@ const JournalPage = async () => {
         <div className="my-8">
           <Question />
         </div>
+        <Separator className="my-4" />
         <NewEntry />
       </div>
       {entries.map((entry: any) => (
